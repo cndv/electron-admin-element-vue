@@ -35,4 +35,12 @@ export default {
   'index-layout.menu.roles.all': '用户都有权限',
   'index-layout.menu.roles.user': 'Users有权限',
   'index-layout.menu.roles.test': 'Tests有权限',
+
+  //项目管理
+  'index-layout.menu.projects': '项目管理',
+  'index-layout.menu.projects.all':'项目列表',
+  'index-layout.menu.projects.add':'添加项目',
+  'index-layout.menu.projects.edit':'编辑项目',
+  'index-layout.menu.projects.del':'删除项目',
+  'index-layout.menu.projects.database':'数据库',
 };

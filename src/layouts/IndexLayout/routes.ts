@@ -217,6 +217,35 @@ const IndexLayoutRoutes: Array<RoutesDataItem> = [
       },
     ],
   },
+  {
+    icon: 'control',
+    title: 'index-layout.menu.projects',
+    path: '/projects',
+    redirect: '/projects/all',
+    component: BlankLayout,
+    children: [
+      {
+        icon: 'detail',
+        title: 'index-layout.menu.projects.all',
+        path: 'all',
+        component: ()=> import('@/views/roles/all/index.vue'),
+      },
+      {
+        icon: 'detail',
+        roles: ['user'],
+        title: 'index-layout.menu.roles.user',
+        path: 'user',
+        component: ()=> import('@/views/roles/user/index.vue'),
+      },
+      {
+        icon: 'detail',
+        roles: ['test'],
+        title: 'index-layout.menu.roles.test',
+        path: 'test',
+        component: ()=> import('@/views/roles/test/index.vue'),
+      },
+    ],
+  },
 
 ];
 
