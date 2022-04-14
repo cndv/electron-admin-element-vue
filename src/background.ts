@@ -10,6 +10,7 @@ protocol.registerSchemesAsPrivileged([
   { scheme: 'app', privileges: { secure: true, standard: true } }
 ])
 
+
 async function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
@@ -31,12 +32,16 @@ async function createWindow() {
 
     // The production environment hides menus
     Menu.setApplicationMenu(null);
+    // const menu = Menu.buildFromTemplate()
+    // Menu.setApplicationMenu(menu) // 设置菜单部分
 
     createProtocol('app')
     // Load the index.html when not in development
     win.loadURL('app://./index.html')
   }
 }
+
+
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
