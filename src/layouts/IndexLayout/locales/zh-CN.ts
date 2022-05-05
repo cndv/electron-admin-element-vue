@@ -7,6 +7,11 @@ export default {
   'index-layout.menu.home.custom-breadcrumbs': '自定义面包屑',
   'index-layout.menu.home.custom-breadcrumbs.liqingsong.cc': 'liqingsong.cc',
   'index-layout.menu.home.docs': '使用文档',
+ 
+
+  'index-layout.menu.code': '代码工厂',
+  'index-layout.menu.code.index': '模型列表',
+  'index-layout.menu.code.create': '添加模型',
 
   'index-layout.menu.component': '组件',
   'index-layout.menu.component.icon': '图标',

@@ -27,3 +27,34 @@ export function unique<T>(arr: Array<T>): Array<T> {
   }
   return array;
 }
+
+
+export function deepClone(obj: Object): Object {
+  const newObj = Array.isArray(obj) ? [] : {}
+
+  if (obj && typeof obj === 'object') {
+    for (const key in obj) {
+      // eslint-disable-next-line no-prototype-builtins
+      if (obj.hasOwnProperty(key)) {
+        newObj[key] = obj && typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key]
+      }
+    }
+  }
+
+  return newObj
+}
+
+
+export function setDataNull(data: Object): any {
+  let key: string
+
+  for (key in data) {
+    if (typeof data[key] == "object") {
+      data[key] = {};
+    } else {
+      data[key] = '';
+    }
+  }
+
+  return data
+}

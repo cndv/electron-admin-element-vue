@@ -1,6 +1,6 @@
 <template>
     <div class="indexlayout-right-footer">
-      <div class="footer-links">
+      <!-- <div class="footer-links">
         <a
           href="http://tsv2-demo.admin-element-vue.liqingsong.cc"
           target="_blank"
@@ -22,7 +22,7 @@
           网页小功能
         </a>
       </div>
-      <div>Copyright © 2020 LIQINGSONG.CC, All Rights Reserved</div>
+      <div>Copyright © 2020 LIQINGSONG.CC, All Rights Reserved</div> -->
     </div>
 </template>
 <script lang="ts">

@@ -1,6 +1,7 @@
 @import './element-variables.scss';
 @import './variables.scss';
 @import './mixin.scss';
+@import './common.min.scss';
 
 #nprogress .bar {
     background: var(--el-color-primary) !important;
@@ -32,6 +33,10 @@ a:hover {
 
 .border-solid-transparent{
     border: solid 1px transparent;
+}
+
+.text-align-left {
+    text-align: left;
 }
 
 .text-align-right {

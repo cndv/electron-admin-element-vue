@@ -51,6 +51,18 @@ const IndexLayoutRoutes: Array<RoutesDataItem> = [
         belongTopMenu: '/home',
         redirect: ''
       },
+      {
+        icon: 'detail',
+        title: 'index-layout.menu.code.index',
+        path: 'code/index',
+        component: ()=> import('@/views/code/index/index.vue'),
+      },
+      {
+        icon: 'detail',
+        title: 'index-layout.menu.code.create',
+        path: 'code/create',
+        component: ()=> import('@/views/code/create/index.vue'),
+      },
     ],
   },
 
@@ -216,8 +228,7 @@ const IndexLayoutRoutes: Array<RoutesDataItem> = [
         component: ()=> import('@/views/roles/test/index.vue'),
       },
     ],
-  },
-
+  }
 ];
 
 export default IndexLayoutRoutes;
