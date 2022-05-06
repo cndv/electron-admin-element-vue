@@ -1,21 +1,16 @@
 import { Mutation, Action, ActionObject } from 'vuex';
 import { StoreModuleType } from "@/utils/store";
 import { ResponseData } from '@/utils/request';
-import { TableDataType, TableListItem, TableListQueryParams, codeModelFieldType } from './data.d';
+import { codeModelFieldType, dbFieldsType } from './data.d';
 
 
 export interface StateType {
-    tableData: TableDataType;
-    updateData: Partial<TableListItem>;
     codeModelField: codeModelFieldType,
 }
 
 export interface ModuleType extends StoreModuleType<StateType> {
     state: StateType;
     mutations: {
-        setTableData: Mutation<StateType>;
-        setUpdateData: Mutation<StateType>;
-
         addCodeModelFieldDbFields: Mutation<StateType>;
         removeCodeModelFieldDbFields: Mutation<StateType>;
     };
@@ -24,19 +19,26 @@ export interface ModuleType extends StoreModuleType<StateType> {
     };
 }
 
-export const dbFields = {
-    field_title: '',
-    field_name: '',
-    field_input_type: '',
-    field_type: '',
-    field_default_value: '',
-    field_indexs: '',
+export const dbFields = <dbFieldsType> {
+    field_name: 'id',
+    field_title: 'ID',
+    field_input_type: 'input',
+    field_type: 'int',
+    field_default_value: 'null',
+    field_indexs: 'FULLTEXT',
+    field_length: 11,
 
-    field_rule: {
-        validation_rules: '',
+    field_rule: [{
+        validation_rules: '', // 验证规则
         validation_detailed: '', // 验证参数
         validation_scene: '', // 验证场景
         validation_alert_text: '',// 验证提示
+    }],
+
+    field_association: {
+        model: '', // 关联模型
+        relation_key: '', // 关联键名:
+        relation_list: [] 
     }
 }
 
@@ -63,20 +65,6 @@ export const codeModelField = <codeModelFieldType>{
 }
 
 const initState: StateType = {
-    tableData: {
-      list: [],
-      pagination: {
-        total: 0,
-        current: 1,
-        pageSize: 10,
-        showSizeChanger: true,
-        showQuickJumper: true,
-      },
-    },
-    updateData: {
-        id: 1
-    },
-
     codeModelField: codeModelField
 };
 
@@ -87,13 +75,6 @@ const StoreModel: ModuleType = {
         ...initState
     },
     mutations: {
-        setTableData(state, payload) {
-            state.tableData = payload;
-        },
-        setUpdateData(state, payload) {
-            state.updateData = payload;
-        },
-
         addCodeModelFieldDbFields(state, payload) {
             console.log("添加行", payload)
             state.codeModelField.data_conf.db_fields.push(payload);

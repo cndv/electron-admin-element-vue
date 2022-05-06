@@ -13,18 +13,14 @@
         </template>
 
         <el-form :model="modelRef" :rules="rulesRef" ref="formRef" label-width="80px">
-            <el-form-item label="位置" prop="type">
+            <el-form-item label="选择模型" prop="type">
                 <TypeSelect v-model="modelRef.type" placeholder="请选择" style="width:100%" />
             </el-form-item>
-            <el-form-item label="名称" prop="name" >
+            <el-form-item label="关联键名" prop="name" >
                 <el-input v-model="modelRef.name" placeholder="请输入名称" />
             </el-form-item>
-            <el-form-item label="网址" prop="href" >
+            <el-form-item label="关联字段" prop="href" >
                 <el-input v-model="modelRef.href" placeholder="请输入网址" />
-            </el-form-item>
-
-            <el-form-item label="备注" prop="desc" >
-                <el-input v-model="modelRef.desc" placeholder="请输入备注" />
             </el-form-item>
         </el-form>
 

@@ -49,10 +49,17 @@ export function setDataNull(data: Object): any {
   let key: string
 
   for (key in data) {
-    if (typeof data[key] == "object") {
-      data[key] = {};
-    } else {
-      data[key] = '';
+    switch (typeof data[key]) {
+      case 'object':
+        data[key] = {};
+        break;
+      case 'number':
+        data[key] = 0;
+        break;
+
+      default:
+        data[key] = '';
+        break;
     }
   }
 

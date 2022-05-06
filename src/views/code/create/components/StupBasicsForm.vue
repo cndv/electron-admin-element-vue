@@ -1,8 +1,8 @@
 <template>
     <div>
-        <el-card shadow="never" class="cus-card" style="margin-bottom: 15px" :body-style="{ 'padding-bottom': '0' }">
-            <el-form :model="searchModelRef" ref="searchFormRef" label-position="left" label-width="100px">
-                <el-row :gutter="16" type="flex" justify="left" class="flex-wrap-wrap">
+        <el-form :model="searchModelRef" ref="searchFormRef" label-position="left" label-width="100px">
+            <el-card shadow="never" class="cus-card" style="margin-bottom: 5px" :body-style="{ 'padding-bottom': '0' }">
+                <el-row :gutter="16" type="flex" justify="start" class="flex-wrap-wrap">
                     <el-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
                         <el-form-item label="项目名称：">
                             <el-input placeholder="请输入" v-model="searchModelRef.project_info.project_name" />
@@ -11,21 +11,25 @@
                     <el-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
                         <el-form-item label="项目ID：">
                             <el-select v-model="searchModelRef.project_info.project_id" placeholder="">
-                              <el-option label="测试项目1" :value="1"></el-option>
-                              <el-option label="测试项目2" :value="2"></el-option>
+                                <el-option label="测试项目1" :value="1"></el-option>
+                                <el-option label="测试项目2" :value="2"></el-option>
                             </el-select>
                         </el-form-item>
                     </el-col>
                     <el-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
                         <el-form-item label="用户ID：">
                             <el-select v-model="searchModelRef.project_info.project_user_id" placeholder="">
-                              <el-option label="admin" :value="1"></el-option>
-                              <el-option label="super" :value="2"></el-option>
+                                <el-option label="admin" :value="1"></el-option>
+                                <el-option label="super" :value="2"></el-option>
                             </el-select>
                         </el-form-item>
                     </el-col>
+                </el-row>
+            </el-card>
+            <el-card shadow="never" class="cus-card" style="margin-bottom: 15px" :body-style="{ 'padding-bottom': '0' }">
+                <el-row :gutter="16" type="flex" justify="start" class="flex-wrap-wrap">
                     <el-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
-                        <el-form-item label="数据库名称：">
+                        <el-form-item label="数据库备注：">
                             <el-input placeholder="请输入" v-model="searchModelRef.data_conf.db_title" />
                         </el-form-item>
                     </el-col>
@@ -55,8 +59,8 @@
                         </el-form-item>
                     </el-col>
                 </el-row>
-            </el-form>
-        </el-card>
+            </el-card>
+        </el-form>
     </div>
 </template>
 <script lang="ts">
@@ -65,10 +69,10 @@ import { defineComponent, reactive, ref, watch } from "vue";
 import { useStore } from "vuex";
 import MenuSelect from "./MenuSelect.vue";
 import { StateType as ListStateType } from "../store";
-import { codeModelFieldType } from '../data.d'
+import { codeModelFieldType } from "../data.d";
 
 export default defineComponent({
-    name: "Search",
+    name: "StupBasicsForm",
     components: {
         MenuSelect,
     },
@@ -99,7 +103,7 @@ export default defineComponent({
             () => searchModelRef.data_conf.db_parent_menu,
             (newName, oldName) => {
                 console.log("newName:", newName, searchModelRef);
-            },
+            }
             // { deep: true }
         );
 

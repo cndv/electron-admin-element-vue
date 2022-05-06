@@ -73,7 +73,7 @@
                 </el-pagination>
             </div>
 
-            <!-- <create-form :visible="createFormVisible" :onCancel="() => setCreateFormVisible(false)" :onSubmitLoading="createSubmitLoading" :onSubmit="createSubmit" /> -->
+            <create-form :visible="createFormVisible" :onCancel="() => setCreateFormVisible(false)" :onSubmitLoading="createSubmitLoading" :onSubmit="createSubmit" />
 
             <update-form
                 v-if="updateFormVisible === true"
