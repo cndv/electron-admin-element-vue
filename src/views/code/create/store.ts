@@ -20,19 +20,19 @@ export interface ModuleType extends StoreModuleType<StateType> {
 }
 
 export const dbFields = <dbFieldsType> {
-    field_name: 'id',
-    field_title: 'ID',
-    field_input_type: 'input',
-    field_type: 'int',
-    field_default_value: 'null',
-    field_indexs: 'FULLTEXT',
-    field_length: 11,
+    field_name: '',
+    field_title: '',
+    field_input_type: '',
+    field_type: '',
+    field_default_value: '',
+    field_indexs: '',
+    field_length: 0,
 
     field_rule: [{
-        validation_rules: '', // 验证规则
-        validation_detailed: '', // 验证参数
-        validation_scene: '', // 验证场景
-        validation_alert_text: '',// 验证提示
+        validation_rules: '',
+        validation_detailed: '',
+        validation_scene: '',
+        validation_alert_text: '',
     }],
 
     field_association: {
@@ -64,7 +64,7 @@ export const codeModelField = <codeModelFieldType>{
         db_controller_name: 'infoController',
         db_controller_dir: '/controller/info',
         db_parent_menu: "",
-        db_fields: [dbFields]
+        db_fields: []
     },
     list_conf: {},
     add_conf: {},

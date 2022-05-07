@@ -29,7 +29,7 @@ export function unique<T>(arr: Array<T>): Array<T> {
 }
 
 
-export function deepClone(obj: Object): Object {
+export function deepClone<T>(obj: object): T {
   const newObj = Array.isArray(obj) ? [] : {}
 
   if (obj && typeof obj === 'object') {
@@ -41,7 +41,7 @@ export function deepClone(obj: Object): Object {
     }
   }
 
-  return newObj
+  return <T>newObj
 }
 
 
@@ -49,17 +49,19 @@ export function setDataNull(data: Object): Object {
   let key: string
 
   for (key in data) {
-    switch (typeof data[key]) {
-      case 'object':
-        data[key] = {};
-        break;
-      case 'number':
-        data[key] = 0;
-        break;
+    const isArray: boolean = (data[key] instanceof Array)
+    const type: string = typeof data[key]
 
-      default:
-        data[key] = '';
-        break;
+    // console.log(isArray, type, data[key])
+
+    if (isArray) {
+      data[key] = [];
+    } else if (type == 'object') {
+      data[key] = {};
+    } else if (type == 'number') {
+      data[key] = 0;
+    } else {
+      data[key] = '';
     }
   }
 

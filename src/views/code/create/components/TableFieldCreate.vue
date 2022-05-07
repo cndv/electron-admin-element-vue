@@ -78,7 +78,7 @@ import { useStore } from "vuex";
 import { ElMessageBox, ElMessage } from "element-plus";
 import { StateType as ListStateType, dbFields } from "../store";
 import { dbFieldsType } from "../data.d";
-import { deepClone, setDataNull } from "@/utils/array";
+import { deepClone } from "@/utils/array";
 import status, { statusType } from "../status";
 import TableFieldAssociationModel from "./TableFieldAssociationModel.vue";
 import TableFieldRuleModel from "./TableFieldRuleModel.vue";
@@ -93,6 +93,8 @@ export default defineComponent({
 
         const tableLoading = ref<boolean>(false);
         const tableList = reactive<dbFieldsType[]>(store.state.CodeCreateStore.codeModelField.data_conf.db_fields);
+        const dbFieldsHome = deepClone<dbFieldsType>(dbFields)
+        tableList.push(dbFieldsHome)
 
         // 删除
         const handlerDelRow = (index: number, id: number): void => {
@@ -130,7 +132,7 @@ export default defineComponent({
         };
 
         const handlerAddRow = (index: number): void => {
-            const db_fields = setDataNull(deepClone(dbFields));
+            const db_fields = deepClone(dbFields);
             store.commit("CodeCreateStore/addCodeModelFieldDbFields", db_fields);
         };
         const handlerCopy = (index: number): void => {
@@ -151,7 +153,7 @@ export default defineComponent({
             setOpenAssModelShow(false);
         };
 
-        const OpenRuleModelShow = ref<boolean>(true);
+        const OpenRuleModelShow = ref<boolean>(false);
         const setOpenRuleModelShow = (val: boolean): void => {
             OpenRuleModelShow.value = val;
         };
