@@ -73,8 +73,6 @@
                 </el-pagination>
             </div>
 
-            <create-form :visible="createFormVisible" :onCancel="() => setCreateFormVisible(false)" :onSubmitLoading="createSubmitLoading" :onSubmit="createSubmit" />
-
             <update-form
                 v-if="updateFormVisible === true"
                 :visible="updateFormVisible"
@@ -91,7 +89,6 @@ import { computed, ComputedRef, defineComponent, onMounted, Ref, ref } from "vue
 import { useStore } from "vuex";
 import { ElMessageBox, ElMessage } from "element-plus";
 import IconSvg from "@/components/IconSvg";
-import CreateForm from "./components/CreateForm.vue";
 import UpdateForm from "./components/UpdateForm.vue";
 import { StateType as ListStateType } from "./store";
 import { PaginationConfig, TableListItem } from "./data.d";
@@ -123,7 +120,6 @@ export default defineComponent({
     name: "ListTablePage",
     components: {
         IconSvg,
-        // CreateForm,
         UpdateForm,
     },
     setup(): ListTablePageSetupData {
@@ -150,6 +146,7 @@ export default defineComponent({
         // 新增弹框 - visible
         const createFormVisible = ref<boolean>(false);
         const setCreateFormVisible = (val: boolean) => {
+            console.log(123)
             createFormVisible.value = val;
 
             router.push({

@@ -8,6 +8,8 @@ export interface statusType {
     fieldType: statusItem[];
     defaultType: statusItem[];
     indexsType: statusItem[];
+    fieldRule: statusItem[];
+    fieldRuleScene: statusItem[];
 }
 
 const status = <statusType>{
@@ -97,6 +99,30 @@ const status = <statusType>{
         {
             label: 'UNIQUE',
             value: 'UNIQUE'
+        }
+    ],
+    fieldRule: [
+        {
+            label: '必填',
+            value: 'required'
+        },
+        {
+            label: '必须数字',
+            value: 'number'
+        },
+    ],
+    fieldRuleScene: [
+        {
+            label: '不限',
+            value: 'none'
+        },
+        {
+            label: '添加',
+            value: 'add'
+        },
+        {
+            label: '编辑',
+            value: 'edit'
         }
     ]
 }

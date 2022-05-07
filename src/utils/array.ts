@@ -45,7 +45,7 @@ export function deepClone(obj: Object): Object {
 }
 
 
-export function setDataNull(data: Object): any {
+export function setDataNull(data: Object): Object {
   let key: string
 
   for (key in data) {

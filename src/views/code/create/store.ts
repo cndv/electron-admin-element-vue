@@ -36,9 +36,17 @@ export const dbFields = <dbFieldsType> {
     }],
 
     field_association: {
-        model: '', // 关联模型
-        relation_key: '', // 关联键名:
-        relation_list: [] 
+        type: '',
+        model_conf: {
+            model: '',
+            relation_key: '',
+            relation_list: []
+        },
+        field_conf: [{
+            key: 0,
+            value: '',
+            label: ''
+        }]
     }
 }
 

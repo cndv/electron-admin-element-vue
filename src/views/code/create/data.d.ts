@@ -1,8 +1,18 @@
 
+interface DomainItem {
+  key: number;
+  value: string;
+  label: string;
+}
+
 export interface FieldAssociationFormType {
-  model: string; // 关联模型
-  relation_key: string; // 关联键名:
-  relation_list: any[]; // 多个关联字段
+  type: ''; // field 字典, model 模型
+  model_conf: {
+    model: string; // 关联模型
+    relation_key: string; // 关联键名
+    relation_list: any[]; // 多个关联字段
+  },
+  field_conf: DomainItem[]
 }
 
 export interface FieldRuleFormType {
