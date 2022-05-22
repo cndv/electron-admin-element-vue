@@ -3,12 +3,12 @@
         <el-table row-key="id" :data="tableList" v-loading="tableLoading">
             <el-table-column fixed type="index" label="序号" width="60" />
 
-            <el-table-column min-width="100" fixed label="字段名称" prop="field_name">
+            <el-table-column min-width="100" fixed label="字段名" prop="field_name">
                 <template #default="{ row }">
                     <el-input v-model="row.field_name" placeholder="请输入"></el-input>
                 </template>
             </el-table-column>
-            <el-table-column min-width="100" fixed label="字段备注" prop="field_title">
+            <el-table-column min-width="100" fixed label="注释" prop="field_title">
                 <template #default="{ row }">
                     <el-input v-model="row.field_title" placeholder="请输入"></el-input>
                 </template>
@@ -34,9 +34,10 @@
             </el-table-column>
             <el-table-column min-width="120" label="默认值" prop="field_default_value">
                 <template #default="{ row }">
-                    <el-select v-model="row.field_default_value" placeholder="请选择">
+                    <el-input v-model="row.field_default_value" placeholder="请输入"></el-input>
+                    <!-- <el-select v-model="row.field_default_value" placeholder="请选择">
                         <el-option v-for="(item, index) in statusSelect.defaultType" :key="index" :label="item.label" :value="item.value"></el-option>
-                    </el-select>
+                    </el-select> -->
                 </template>
             </el-table-column>
             <el-table-column label="索引" min-width="140" prop="field_indexs">
@@ -47,10 +48,10 @@
                 </template>
             </el-table-column>
 
-            <el-table-column fixed="right" label="操作" prop="action" min-width="260">
+            <el-table-column fixed="right" label="操作" prop="action" min-width="300">
                 <template #default="{ row, $index }">
-                    <el-button type="text" size="small" @click="() => handlerOpenAssModel($index)"> 数据源 </el-button>
-                    <el-button type="text" size="small" @click="() => handlerOpenRuleModel($index)"> 数据验证规则 </el-button>
+                    <el-button :type="row.field_association.type ? 'success' : 'info'" size="small" @click="() => handlerOpenAssModel($index)"> 数据源 </el-button>
+                    <el-button :type="row.field_rule[0].validation_rules ? 'success' : 'info'" size="small" @click="() => handlerOpenRuleModel($index)"> 数据验证规则 </el-button>
                     <el-dropdown class="ds-ml-sm" split-button size="small" type="primary">
                         <div @click.prevent="() => handlerAddRow($index)">添加行</div>
                         <template #dropdown>
@@ -93,8 +94,10 @@ export default defineComponent({
 
         const tableLoading = ref<boolean>(false);
         const tableList = reactive<dbFieldsType[]>(store.state.CodeCreateStore.codeModelField.data_conf.db_fields);
-        const dbFieldsHome = deepClone<dbFieldsType>(dbFields)
-        tableList.push(dbFieldsHome)
+        if(tableList.length === 0) {
+            const dbFieldsHome = deepClone<dbFieldsType>(dbFields)
+            tableList.push(dbFieldsHome)
+        }
 
         // 删除
         const handlerDelRow = (index: number, id: number): void => {

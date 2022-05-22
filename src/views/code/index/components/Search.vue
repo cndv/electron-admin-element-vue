@@ -99,13 +99,13 @@ export default defineComponent({
             searchOpen.value = !searchOpen.value;
         };
 
-        watch(
-            () => searchModelRef.menu_id,
-            (newName, oldName) => {
-                console.log("newName:", newName, oldName);
-            },
-            // { deep: true }
-        );
+        // watch(
+        //     () => searchModelRef.menu_id,
+        //     (newName, oldName) => {
+        //         console.log("newName:", newName, oldName);
+        //     },
+        //     { deep: true }
+        // );
 
         return {
             setSearchOpen,
